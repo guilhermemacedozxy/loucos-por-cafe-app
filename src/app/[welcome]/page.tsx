@@ -1,3 +1,5 @@
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { getCoffeeShopBySlug } from "@/data/get-coffeshop-by-slug";
 import Image from "next/image";
 import { notFound } from "next/navigation";
