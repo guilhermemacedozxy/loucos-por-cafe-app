@@ -20,6 +20,14 @@ const CoffeeShopInitialPage = async ({params}: CoffeeShopInitialPageProps) => {
       <div className="flex flex-col items-center gap-2">
         <Image src={coffee?.avatarImageUrl} alt={coffee.name} width={98} height={90} />
       </div>
+      <div className="pt-24 text-center space-y-2">
+        <h3 className="text-2xl font-semibold text-[--secondary]">
+          Seja bem-vindo!
+        </h3>
+        <p className="opacity-55 text-[--secondary]">
+          Escolha o modo para aproveitar sua refeição. Estamos aqui para oferecer praticidade e sabor com super conforto!
+        </p>
+      </div>
     </div>
   )
 }
