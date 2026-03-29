@@ -30,6 +30,25 @@ const CoffeeShopInitialPage = async ({params}: CoffeeShopInitialPageProps) => {
           Escolha o modo para aproveitar sua refeição. Estamos aqui para oferecer praticidade e sabor com super conforto!
         </p>
       </div>
+      <div className="pt-24 grid grid-cols-2 gap-6">
+        <Card>
+          <CardContent className="flex flex-col items-center gap-8 py-8 bg-white rounded-2xl">
+            <Image src="/dine_in.png" width={111} height={116} alt="Para comer aqui"/>
+            <Button variant="secondary" className="rounded-sm bg-[--primary] text-[--secondary]">
+              Para comer aqui
+            </Button>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardContent className="flex flex-col items-center gap-8 py-8 bg-white rounded-2xl">
+            <Image src="/takeaway.png" width={111} height={116} alt="Para levar"/>
+            <Button variant="secondary" className="rounded-sm bg-[--primary] text-[--secondary]">
+              Para levar
+            </Button>
+          </CardContent>
+        </Card>
+      </div>
     </div>
   )
 }
