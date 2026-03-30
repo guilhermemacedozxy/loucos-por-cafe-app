@@ -3,6 +3,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { getCoffeeShopBySlug } from "@/data/get-coffeshop-by-slug";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import ConsumptionMethodOption from "./components/consumption-method-option";
 
 interface CoffeeShopInitialPageProps {
   params: Promise<{welcome: string}>
@@ -31,23 +32,7 @@ const CoffeeShopInitialPage = async ({params}: CoffeeShopInitialPageProps) => {
         </p>
       </div>
       <div className="pt-24 grid grid-cols-2 gap-6">
-        <Card>
-          <CardContent className="flex flex-col items-center gap-8 py-8 bg-white rounded-2xl">
-            <Image src="/dine_in.png" width={111} height={116} alt="Para comer aqui"/>
-            <Button variant="secondary" className="rounded-sm bg-[--primary] text-[--secondary]">
-              Para comer aqui
-            </Button>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardContent className="flex flex-col items-center gap-8 py-8 bg-white rounded-2xl">
-            <Image src="/takeaway.png" width={111} height={116} alt="Para levar"/>
-            <Button variant="secondary" className="rounded-sm bg-[--primary] text-[--secondary]">
-              Para levar
-            </Button>
-          </CardContent>
-        </Card>
+        
       </div>
     </div>
   )
