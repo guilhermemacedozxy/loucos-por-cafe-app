@@ -33,12 +33,14 @@ const CoffeeShopInitialPage = async ({params}: CoffeeShopInitialPageProps) => {
       </div>
       <div className="pt-24 grid grid-cols-2 gap-6">
         <ConsumptionMethodOption
+          option="DINE_IN"
           buttonText="Para comer aqui"
           imageAlt="Comer aqui"
           imageUrl="/dine_in.png"
         />
 
         <ConsumptionMethodOption
+          option="TAKEAWAY"
           buttonText="Para levar"
           imageAlt="Para levar"
           imageUrl="/takeaway.png"
