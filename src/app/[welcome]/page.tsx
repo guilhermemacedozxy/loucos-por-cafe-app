@@ -19,7 +19,7 @@ const CoffeeShopInitialPage = async ({params}: CoffeeShopInitialPageProps) => {
   }
 
   return (
-    <div className="bg-[--primary] h-screen flex flex-col items-center justify-center px-6 pt-24">
+    <div className="bg-[--primary] bg-[url(/bg.png)] h-screen flex flex-col items-center justify-center px-6 pt-24">
       <div className="flex flex-col items-center gap-2">
         <Image src={coffee?.avatarImageUrl} alt={coffee.name} width={98} height={90} />
       </div>
