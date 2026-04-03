@@ -1,4 +1,7 @@
+import { Button } from "@/components/ui/button";
 import { db } from "@/lib/prisma";
+import { ChevronLeftIcon, ScrollTextIcon } from "lucide-react";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 
 interface CoffeeShopMenuPageProps {
@@ -17,8 +20,25 @@ const CoffeeShopMenuPage = async ({params, searchParams}: CoffeeShopMenuPageProp
   if (!isConsumptionMethodValid(consumptionMethod)) {
     return notFound();
   }
-  const coffee = await db.coffeeShop.findMany({where: { slug: welcome }});
-  return ( <h1>MENU DE CATEGORIAS PAGINA PRINCIPAL DA NOSSA CAFETERIA {welcome}</h1>);
+  const coffee = await db.coffeeShop.findFirst({where: { slug: welcome }});
+  if(!coffee) {
+    return notFound();
+  }
+  return ( 
+    <div>
+      <div className="relative h-[250px] w-full">
+        <Button variant="secondary" size="icon" className="absolute left-4 top-4 z-50 rounded-full bg-[--secondary] border-none">
+          <ChevronLeftIcon />
+        </Button>
+
+          <Image src={coffee.coverImageUrl} alt={coffee.name} fill className="object-cover"/>
+
+        <Button variant="secondary" size="icon" className="absolute right-4 top-4 z-50 rounded-full bg-[--secondary] border-none">
+          <ScrollTextIcon />
+        </Button>
+      </div>
+    </div>
+  );
 }
 
 export default CoffeeShopMenuPage;
