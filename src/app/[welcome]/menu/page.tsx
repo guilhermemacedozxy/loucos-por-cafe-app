@@ -3,6 +3,7 @@ import { db } from "@/lib/prisma";
 import { ChevronLeftIcon, ScrollTextIcon } from "lucide-react";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import CoffeeShopHeader from "./components/header";
 
 interface CoffeeShopMenuPageProps {
   params: Promise<{welcome: string}>;
@@ -26,17 +27,7 @@ const CoffeeShopMenuPage = async ({params, searchParams}: CoffeeShopMenuPageProp
   }
   return ( 
     <div>
-      <div className="relative h-[250px] w-full">
-        <Button variant="secondary" size="icon" className="absolute left-4 top-4 z-50 rounded-full bg-[--secondary] border-none">
-          <ChevronLeftIcon />
-        </Button>
-
-          <Image src={coffee.coverImageUrl} alt={coffee.name} fill className="object-cover"/>
-
-        <Button variant="secondary" size="icon" className="absolute right-4 top-4 z-50 rounded-full bg-[--secondary] border-none">
-          <ScrollTextIcon />
-        </Button>
-      </div>
+      <CoffeeShopHeader coffee={coffee}/>
     </div>
   );
 }

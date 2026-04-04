@@ -17,7 +17,7 @@ const ConsumptionMethodOption = ({imageAlt, imageUrl, buttonText, option, welcom
     <Card>
       <CardContent className="flex flex-col items-center gap-8 py-8 bg-white rounded-2xl">
         <Image src={imageUrl} width={111} height={116} alt={imageAlt}/>
-        <Button variant="secondary" className="rounded-sm bg-[--primary] text-[--secondary]">
+        <Button variant="secondary" className="rounded-sm bg-[--primary] text-[--secondary]" asChild>
           <Link href={`/${welcome}/menu?consumptionMethod=${option}`}>
             {buttonText}
           </Link>
