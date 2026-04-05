@@ -1,10 +1,18 @@
-import { CoffeeShop } from "@prisma/client";
+import { CoffeeShop, Prisma } from "@prisma/client";
 import { ClockIcon } from "lucide-react";
 import Image from "next/image";
 
 interface CoffeeCategoriesProps {
-  coffee: CoffeeShop;
-}
+  coffee: Prisma.CoffeeShopGetPayload<{
+    include: {
+      menuCategories: {
+        include: {
+          products: true
+        };
+      };
+    };
+  }>;
+};
 
 const CoffeeCategories = ({ coffee }: CoffeeCategoriesProps) => (
   <div className="relative z-50 mt-[-1.5rem] rounded-t-3xl border-b border-opacity-5 border-black bg-[--secondary] p-5">

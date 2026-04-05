@@ -22,7 +22,13 @@ const CoffeeShopMenuPage = async ({params, searchParams}: CoffeeShopMenuPageProp
   if (!isConsumptionMethodValid(consumptionMethod)) {
     return notFound();
   }
-  const coffee = await db.coffeeShop.findFirst({where: { slug: welcome }});
+  const coffee = await db.coffeeShop.findFirst({where: { slug: welcome }, include: {
+    menuCategories: {
+      include: {
+        products: true,
+      }
+    },
+  }});
   if(!coffee) {
     return notFound();
   }
