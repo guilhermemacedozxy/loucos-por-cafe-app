@@ -4,6 +4,7 @@ import { ChevronLeftIcon, ScrollTextIcon } from "lucide-react";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import CoffeeShopHeader from "./components/header";
+import CoffeeCategories from "./components/categories";
 
 interface CoffeeShopMenuPageProps {
   params: Promise<{welcome: string}>;
@@ -28,6 +29,7 @@ const CoffeeShopMenuPage = async ({params, searchParams}: CoffeeShopMenuPageProp
   return ( 
     <div>
       <CoffeeShopHeader coffee={coffee}/>
+      <CoffeeCategories coffee={coffee}/>
     </div>
   );
 }
