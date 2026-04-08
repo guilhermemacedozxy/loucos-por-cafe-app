@@ -19,13 +19,19 @@ interface CoffeeCategoriesProps {
   }>;
 };
 
+type MenuCategoriesWithProducts = Prisma.MenuCategoryGetPayload<{
+  include: {
+    products: true
+  };
+}>;
+
 const CoffeeCategories = ({ coffee }: CoffeeCategoriesProps) => {
-    const [selectedCategory, setSelectedCategory] = useState<MenuCategory> (coffee.menuCategories[0])
-    const handleCategoryClick = (category: MenuCategory) => {
+    const [selectedCategory, setSelectedCategory] = useState<MenuCategoriesWithProducts> (coffee.menuCategories[0])
+    const handleCategoryClick = (category: MenuCategoriesWithProducts) => {
       setSelectedCategory(category);
     }
 
-    const getCategoryButtonVariant = (category: MenuCategory) => {
+    const getCategoryButtonVariant = (category: MenuCategoriesWithProducts) => {
       return (selectedCategory.id == category.id ? "outline" : "secondary")
     }
   return (
