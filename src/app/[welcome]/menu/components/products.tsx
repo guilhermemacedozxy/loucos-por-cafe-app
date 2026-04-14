@@ -13,11 +13,11 @@ const Products = ({ products }: ProductsProps) => {
         <Link key={product.id} href="/" className="flex items-center justify-between gap-10 py-3 border-b border-opacity-5 border-black">
 
           <div>
-            <h3 className="text-sm font-medium">
+            <h3 className="text-sm font-normal">
               {product.name}
             </h3>
 
-            <p className="line-clamp-2 text-sm text-muted-foreground">
+            <p className="line-clamp-2 text-sm opacity-45">
               {product.description}
             </p>
 
