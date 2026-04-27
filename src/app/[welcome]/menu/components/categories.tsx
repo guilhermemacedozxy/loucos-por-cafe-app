@@ -36,7 +36,7 @@ const CoffeeCategories = ({ coffee }: CoffeeCategoriesProps) => {
       return (selectedCategory.id == category.id ? "outline" : "secondary")
     }
   return (
-    <div className="relative z-50 mt-[-1.5rem] rounded-t-3xl border-b border-opacity-5 border-black bg-[--secondary]">
+    <div className="relative z-50 mt-[-1.5rem] rounded-t-3xl bg-[--secondary]">
     <div className="p-5">
       <div className="flex items-center gap-3">
       <div className="bg-[--primary] w-11 h-11 rounded-xl flex items-center">
@@ -66,7 +66,7 @@ const CoffeeCategories = ({ coffee }: CoffeeCategoriesProps) => {
       <ScrollBar orientation="horizontal"/>
     </ScrollArea>
 
-
+    <h3 className="px-5 font-semibold pt-8">{selectedCategory.name}</h3>
     <Products products={selectedCategory.products}/>
     </div>
     );
