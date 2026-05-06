@@ -4,6 +4,7 @@ import { ChevronLeftIcon, ScrollTextIcon } from "lucide-react";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import ProductHeader from "./components/product-header";
+import ProductDetails from "./components/product-details";
 
 interface ProductPageProps {
   params: Promise<{welcome: string, productId: string}>;
@@ -12,7 +13,12 @@ interface ProductPageProps {
 
 const ProductPage = async ({params}: ProductPageProps) => {
   const { welcome, productId } = await params; 
-  const product = await db.product.findFirst({where: { id: productId }})
+  const product = await db.product.findFirst({where: { id: productId }, include: {coffeeShop: {
+    select: {
+      name: true,
+      avatarImageUrl: true,
+    }
+  }}})
   if (!product) {
     return 
       notFound();
@@ -20,8 +26,7 @@ const ProductPage = async ({params}: ProductPageProps) => {
   return (
     <>
       <ProductHeader product={product}/>
-      {welcome}
-      {productId}
+      <ProductDetails product={product}/>
     </>
   );
 };
