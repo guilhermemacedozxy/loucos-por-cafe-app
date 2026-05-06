@@ -1,3 +1,4 @@
+import { formatCurrency } from "@/helpers/format-currency";
 import { Prisma } from "@prisma/client";
 import Image from "next/image";
 
@@ -26,6 +27,10 @@ const ProductDetails = ({ product }: ProductDetailsProps) => (
       </div>
 
       <h2 className="text-xl font-semibold mt-1">{product.name}</h2>
+
+      <div className="flex items-center justify-between">
+        <h3 className="text-xl font-semibold">{formatCurrency(product.price)}</h3>
+      </div>
     </div>
   </div>
 )
