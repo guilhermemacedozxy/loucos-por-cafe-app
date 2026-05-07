@@ -1,5 +1,7 @@
+import { Button } from "@/components/ui/button";
 import { formatCurrency } from "@/helpers/format-currency";
 import { Prisma } from "@prisma/client";
+import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import Image from "next/image";
 
 interface ProductDetailsProps {
@@ -30,6 +32,15 @@ const ProductDetails = ({ product }: ProductDetailsProps) => (
 
       <div className="flex items-center justify-between">
         <h3 className="text-xl font-semibold">{formatCurrency(product.price)}</h3>
+      </div>
+      <div className="felx items-center gap-3 text-center">
+        <Button variant="destructive" className="h-8 w-8 rounded-xl">
+          <ChevronLeftIcon/>
+        </Button>
+
+        <Button variant="outline" className="h-8 w-8 rounded-xl">
+          <ChevronRightIcon/>
+        </Button>
       </div>
     </div>
   </div>
