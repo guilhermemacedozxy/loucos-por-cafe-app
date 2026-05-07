@@ -19,7 +19,12 @@ interface ProductDetailsProps {
 const ProductDetails = ({ product }: ProductDetailsProps) => {
   const [quantity, setQuantity] = useState<number>(1);
   const handleDecreaseQuantity = () => {
-    setQuantity(prev => prev - 1)
+    setQuantity((prev) => {
+      if (prev === 1) {
+        return 1;
+      }
+      return prev - 1;
+    })
   };
   const handleIncreaseQuantity = () => {
     setQuantity(prev => prev + 1)
