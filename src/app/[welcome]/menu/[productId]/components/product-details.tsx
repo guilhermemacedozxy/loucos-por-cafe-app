@@ -32,15 +32,17 @@ const ProductDetails = ({ product }: ProductDetailsProps) => (
 
       <div className="flex items-center justify-between">
         <h3 className="text-xl font-semibold">{formatCurrency(product.price)}</h3>
-      </div>
-      <div className="felx items-center gap-3 text-center">
+      <div className="flex items-center gap-3 text-center">
         <Button variant="destructive" className="h-8 w-8 rounded-xl">
           <ChevronLeftIcon/>
         </Button>
 
+        <p className="w-4">1</p>
+
         <Button variant="outline" className="h-8 w-8 rounded-xl">
           <ChevronRightIcon/>
         </Button>
+      </div>
       </div>
     </div>
   </div>
