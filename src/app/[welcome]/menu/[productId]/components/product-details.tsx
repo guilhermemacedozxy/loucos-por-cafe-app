@@ -61,6 +61,11 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
       </div>
       </div>
       </div>
+      
+      <div className="mt-6 space-y-3">
+        <h4 className="font-semibold">Sobre</h4>
+        <p className="text-[#7E8392]">{product.description}</p>
+      </div>
     </div>
   )
 }
