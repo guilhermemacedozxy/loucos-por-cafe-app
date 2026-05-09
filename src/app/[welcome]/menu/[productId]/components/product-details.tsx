@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { formatCurrency } from "@/helpers/format-currency";
 import { Prisma } from "@prisma/client";
-import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
+import { ChefHatIcon, ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -65,6 +65,13 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
       <div className="mt-6 space-y-3">
         <h4 className="font-semibold">Sobre</h4>
         <p className="text-[#7E8392]">{product.description}</p>
+      </div>
+
+      <div className="mt-6 space-y-3">
+        <div className="flex items-center gap-1.5">
+          <ChefHatIcon size={18} />
+        <h4 className="font-semibold">Ingredientes</h4>
+        </div>
       </div>
     </div>
   )
