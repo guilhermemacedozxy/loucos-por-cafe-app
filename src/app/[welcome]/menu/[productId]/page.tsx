@@ -17,11 +17,15 @@ const ProductPage = async ({params}: ProductPageProps) => {
     select: {
       name: true,
       avatarImageUrl: true,
+      slug: true,
     }
   }}})
   if (!product) {
     return 
       notFound();
+  }
+  if (product.coffeeShop.slug.toUpperCase() !== welcome.toUpperCase()) {
+    return notFound();
   }
   return (
     <div className="flex h-full flex-col">
