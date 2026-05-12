@@ -99,7 +99,7 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
     </ScrollArea>
   </div>
 
-  <Button className="mt-6 w-full rounded-full hover:border hover:border-[--primary] hover:text-[--primary]">
+  <Button className="w-full rounded-full hover:border hover:border-[--primary] hover:text-[--primary]">
     Adicionar à Sacola
   </Button>
 </div>
