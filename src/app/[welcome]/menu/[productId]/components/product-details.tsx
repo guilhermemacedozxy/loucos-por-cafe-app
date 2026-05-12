@@ -52,7 +52,7 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
       {product.name}
     </h2>
 
-    <div className="flex items-center justify-between">
+    <div className="flex items-center justify-between mt-3">
       <h3 className="text-xl font-semibold">
         {formatCurrency(product.price)}
       </h3>
