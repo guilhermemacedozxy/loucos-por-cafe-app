@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { formatCurrency } from "@/helpers/format-currency";
 import { Prisma } from "@prisma/client";
 import { ChefHatIcon, ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
@@ -30,8 +31,8 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
     setQuantity(prev => prev + 1)
   };
   return (
-    <div className="relative z-50 mt-[-1.5rem] flex h-full flex-col rounded-t-3xl p-5">
-  <div className="flex-1">
+    <div className="relative z-50 mt-[-1.5rem] flex h-full flex-col rounded-t-3xl p-5 overflow-hidden">
+  <div className="flex-1 overflow-hidden">
     <div>
       <div className="flex items-center gap-1.5">
         <div className="rounded-full bg-[--primary]">
@@ -79,21 +80,23 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
       </div>
     </div>
 
-    <div className="mt-6 space-y-3">
-      <h4 className="font-semibold">Sobre</h4>
+    <ScrollArea className="h-full">
+        <div className="mt-6 space-y-3">
+          <h4 className="font-semibold">Sobre</h4>
 
-      <p className="text-[#7E8392]">
-        {product.description}
-      </p>
-    </div>
+          <p className="text-[#7E8392]">
+           {product.description}
+          </p>
+        </div>
 
-    <div className="mt-6 space-y-3">
-      <div className="flex items-center gap-1.5">
-        <ChefHatIcon size={18} />
+     <div className="mt-6 space-y-3">
+       <div className="flex items-center gap-1.5">
+          <ChefHatIcon size={18} />
 
-        <h4 className="font-semibold">Ingredientes</h4>
+          <h4 className="font-semibold">Ingredientes</h4>
+       </div>
       </div>
-    </div>
+    </ScrollArea>
   </div>
 
   <Button className="mt-6 w-full rounded-full hover:border hover:border-[--primary] hover:text-[--primary]">
