@@ -1,11 +1,115 @@
-import { Product } from "@prisma/client";
+"use client";
+
+import { Button } from "@/components/ui/button";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { formatCurrency } from "@/helpers/format-currency";
+import { Prisma } from "@prisma/client";
+import { ChefHatIcon, ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
+import Image from "next/image";
+import { useState } from "react";
 
 interface ProductDetailsProps {
-  product: Product;
+  product: Prisma.ProductGetPayload<{ include: { coffeeShop: {
+    select: {
+      name: true,
+      avatarImageUrl: true,
+    }
+  } } }>;
 }
 
-const ProductDetails = ({product}: ProductDetailsProps) => {
+const ProductDetails = ({ product }: ProductDetailsProps) => {
+  const [quantity, setQuantity] = useState<number>(1);
+  const handleDecreaseQuantity = () => {
+    setQuantity((prev) => {
+      if (prev === 1) {
+        return 1;
+      }
+      return prev - 1;
+    })
+  };
+  const handleIncreaseQuantity = () => {
+    setQuantity(prev => prev + 1)
+  };
   return (
-    
-  );
+  <div className="relative z-50 mt-[-1.5rem] flex h-full flex-col rounded-t-3xl p-5">
+     <div>
+    <div className="flex items-center gap-1.5">
+      <div className="rounded-full bg-[--primary]">
+        <Image
+          src={product.coffeeShop.avatarImageUrl}
+          alt={product.coffeeShop.name}
+          width={16}
+          height={16}
+        />
+      </div>
+
+      <p className="text-xs opacity-50">
+        {product.coffeeShop.name}
+      </p>
+    </div>
+
+    <h2 className="mt-1 text-xl font-semibold">
+      {product.name}
+    </h2>
+
+    <div className="flex items-center justify-between mt-3">
+      <h3 className="text-xl font-semibold">
+        {formatCurrency(product.price)}
+      </h3>
+
+      <div className="flex items-center gap-3 text-center">
+        <Button
+          variant="destructive"
+          className="h-8 w-8 rounded-xl"
+          onClick={handleDecreaseQuantity}
+        >
+          <ChevronLeftIcon />
+        </Button>
+
+        <p className="w-4">{quantity}</p>
+
+        <Button
+          variant="outline"
+          className="h-8 w-8 rounded-xl"
+          onClick={handleIncreaseQuantity}
+        >
+          <ChevronRightIcon />
+        </Button>
+      </div>
+    </div>
+     </div>
+
+    <ScrollArea className="mt-6 flex-1">
+      <div className="space-y-6 pb-24">
+        <div className="space-y-3">
+          <h4 className="font-semibold">Sobre</h4>
+
+         <p className="text-[#7E8392]">
+          {product.description}
+         </p>
+       </div>
+
+      <div className="space-y-3">
+        <div className="flex items-center gap-1.5">
+          <ChefHatIcon size={18} />
+
+          <h4 className="font-semibold">Ingredientes</h4>
+        </div>
+
+        <ul className="list-disc px-5 text-sm text-[#7E8392]">
+          {product.ingredients.map((ingredient) => (
+            <li key={ingredient}>{ingredient}</li>
+          ))}
+        </ul>
+      </div>
+      </div>
+    </ScrollArea>
+
+    <Button className="mt-4 w-full rounded-full hover:border hover:border-[--primary] hover:text-[--primary]">
+      Adicionar à Sacola
+    </Button>
+  </div>
+  )
 }
+
+export default ProductDetails;
