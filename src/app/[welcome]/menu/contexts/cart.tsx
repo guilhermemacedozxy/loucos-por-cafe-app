@@ -1,3 +1,5 @@
+"use client";
+
 import { Product } from "@prisma/client";
 import { createContext, ReactNode, useState } from "react";
 
@@ -8,13 +10,13 @@ interface CartProduct extends Product {
 export interface ICartContext {
   isOpen: boolean;
   products: CartProduct[];
-  toogleCart: () => void;
+  toggleCart: () => void;
 }
 
 export const CartContext = createContext<ICartContext>({
   isOpen: false,
   products: [],
-  toogleCart: () => {},
+  toggleCart: () => {},
 })
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
@@ -28,7 +30,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     <CartContext.Provider value={{
       isOpen: isOpen,
       products: products,
-      toogleCart: toggleCart,
+      toggleCart: toggleCart,
     }}>
       {children}
     </CartContext.Provider> 
