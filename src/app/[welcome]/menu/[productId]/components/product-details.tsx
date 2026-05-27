@@ -6,7 +6,8 @@ import { formatCurrency } from "@/helpers/format-currency";
 import { Prisma } from "@prisma/client";
 import { ChefHatIcon, ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import Image from "next/image";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { CartContext } from "../../contexts/cart";
 
 interface ProductDetailsProps {
   product: Prisma.ProductGetPayload<{ include: { coffeeShop: {
@@ -18,6 +19,8 @@ interface ProductDetailsProps {
 }
 
 const ProductDetails = ({ product }: ProductDetailsProps) => {
+  const {isOpen, toggleCart} = useContext(CartContext);
+
   const [quantity, setQuantity] = useState<number>(1);
   const handleDecreaseQuantity = () => {
     setQuantity((prev) => {
@@ -30,6 +33,10 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
   const handleIncreaseQuantity = () => {
     setQuantity(prev => prev + 1)
   };
+
+  const handleAddToCart = () => {
+    toggleCart()
+  }
   return (
   <div className="relative z-50 mt-[-1.5rem] flex h-full flex-col rounded-t-3xl p-5">
      <div>
@@ -105,7 +112,7 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
       </div>
     </ScrollArea>
 
-    <Button className="mt-4 w-full rounded-full hover:border hover:border-[--primary] hover:text-[--primary]">
+    <Button className="mt-4 w-full rounded-full hover:border hover:border-[--primary] hover:text-[--primary]" onClick={handleAddToCart}>
       Adicionar à Sacola
     </Button>
   </div>
